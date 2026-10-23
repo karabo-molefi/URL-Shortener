@@ -4,6 +4,8 @@ A small Windows desktop app that turns long web links into short, shareable ones
 
 Built with C# and Windows Forms on .NET 8. Shortening is handled by the free [TinyURL](https://tinyurl.com) API, so no account or API key is needed.
 
+![URL demo](assets/URL_Shortener_Demo.gif)
+
 ## Features
 
 - Paste a URL and shorten it in one click
@@ -48,13 +50,15 @@ dotnet run
 
 ```
 URL-Shortener/
-├── MainForm.cs            # UI logic: button handlers and tab navigation
-├── MainForm.Designer.cs   # Designer-generated layout
-├── MainForm.resx          # Form resources
-├── UrlService.cs          # URL validation and TinyURL API call
-├── Program.cs             # Application entry point
-├── URL-Shortener.csproj   # Project file (net8.0-windows, Windows Forms)
-└── URL-Shortener.slnx     # Solution file
+├── assets/
+│   └── URL_Shortener_Demo.gif   # Demo animation used in the README
+├── MainForm.cs                  # UI logic: button handlers and tab navigation
+├── MainForm.Designer.cs         # Designer-generated layout
+├── MainForm.resx                # Form resources
+├── UrlService.cs                # URL validation and TinyURL API call
+├── Program.cs                   # Application entry point
+├── URL-Shortener.csproj         # Project file (net8.0-windows, Windows Forms)
+└── URL-Shortener.slnx           # Solution file
 ```
 
 ## How It Works
