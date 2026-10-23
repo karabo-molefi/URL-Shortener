@@ -4,42 +4,17 @@ namespace URL_Shortener
 {
     public partial class MainForm : Form
     {
+        private readonly UrlService urlService = new UrlService();
         private bool allowTabChange = false;
 
         public MainForm()
         {
             InitializeComponent();
-
             tabControl1.Appearance = TabAppearance.FlatButtons;
             tabControl1.ItemSize = new Size(0, 1);
             tabControl1.SizeMode = TabSizeMode.Fixed;
             tabControl1.TabStop = false;
-
             tabControl1.Selecting += tabControl1_Selecting;
-
-            possibleErrorList.Text = string.Join("\r\n", new[]
-            {
-                "List of possible errors:",
-                "",
-                "✔ Incorrect domain: Check for typos.",
-                "",
-                "✔ Site offline: Confirm the website is running.",
-                "",
-                "✔ Formatting error: Check punctuation and typos.",
-                "",
-                "✔ Spam risk: The link may be flagged as spam.",
-                "",
-                "✔ Blocked link: This URL is restricted.",
-                "",
-                "✔ Reported URL: Users or safety systems flagged it.",
-                "",
-                "✔ Duplicate request: This URL was already shortened recently.",
-                "",
-                "✔ Prohibited content: The link violates our policies.",
-                "",
-                "✔ Rate limit: Too many links created in a short time."
-            });
-
 
         }
 
@@ -55,13 +30,28 @@ namespace URL_Shortener
             allowTabChange = false;
         }
 
-        private void btnShorten_Click(object sender, EventArgs e)
+        private async void btnShorten_Click(object sender, EventArgs e)
         {
-            linkLabelLong.Text = txtURL.Text;
-            GoToTab(1);
-
+            btnShorten.Enabled = false;
+            try
+            {
+                string shortUrl = await urlService.ShortenAsync(txtURL.Text.Trim());
+                linkLabelLong.Text = txtURL.Text.Trim();
+                txtShortUrl.Text = shortUrl;
+                GoToTab(1);
+            }
+            catch (Exception ex)
+            {
+                GoToTab(2);
+                txtURL.Clear();
+                MessageBox.Show(ex.Message, "Failed to shorten url");
+            }
+            finally
+            {
+                btnShorten.Enabled = true;
+            }
+  
         }
-
         private void btnCopy_Click(object sender, EventArgs e)
         {
             GoToTab(2);
@@ -69,12 +59,9 @@ namespace URL_Shortener
 
         private void btnReturn_Click(object sender, EventArgs e)
         {
+            txtURL.Clear();
             GoToTab(0);
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            GoToTab(0);
-        }
     }
 }
