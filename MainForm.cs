@@ -1,6 +1,4 @@
-﻿using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
-
-namespace URL_Shortener
+﻿namespace URL_Shortener
 {
     public partial class MainForm : Form
     {
@@ -9,7 +7,6 @@ namespace URL_Shortener
 
         public MainForm()
         {
-
             InitializeComponent();
             tabControl1.Appearance = TabAppearance.FlatButtons;
             tabControl1.ItemSize = new Size(0, 1);
@@ -43,7 +40,6 @@ namespace URL_Shortener
             }
             catch (Exception ex)
             {
-                GoToTab(2);
                 txtURL.Clear();
                 MessageBox.Show(ex.Message, "Failed to shorten url");
             }

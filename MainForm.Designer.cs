@@ -28,8 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label5 = new Label();
-            possibleErrorList = new Label();
+
             tabPage2 = new TabPage();
             tableLayoutPanel4 = new TableLayoutPanel();
             linkLabelLong = new LinkLabel();
@@ -56,26 +55,6 @@
             tableLayoutPanel1.SuspendLayout();
             tabControl1.SuspendLayout();
             SuspendLayout();
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(0, 5);
-            label5.Margin = new Padding(0, 5, 5, 5);
-            label5.Name = "label5";
-            label5.Size = new Size(342, 45);
-            label5.TabIndex = 1;
-            // 
-            // possibleErrorList
-            // 
-            possibleErrorList.AutoSize = true;
-            possibleErrorList.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            possibleErrorList.Location = new Point(5, 60);
-            possibleErrorList.Margin = new Padding(5);
-            possibleErrorList.Name = "possibleErrorList";
-            possibleErrorList.Size = new Size(121, 15);
-            possibleErrorList.TabIndex = 2;
             // 
             // tabPage2
             // 
@@ -315,8 +294,6 @@
         }
 
         #endregion
-        private Label label5;
-        private Label possibleErrorList;
         private TabPage tabPage2;
         private TableLayoutPanel tableLayoutPanel4;
         private Label label3;
