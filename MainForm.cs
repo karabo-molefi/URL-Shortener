@@ -53,7 +53,7 @@ namespace URL_Shortener
             }
   
         }
-        private void btnCopy_Click(object sender, EventArgs e)
+        private async void btnCopy_Click(object sender, EventArgs e)
         {
             string textToCopy = txtShortUrl.Text;
 
@@ -63,7 +63,7 @@ namespace URL_Shortener
                 string original = btnCopy.Text;
                 btnCopy.Text = "Copied ✔";
                 btnCopy.Enabled = false;
-                Thread.Sleep(1500);
+                await Task.Delay(1500);
                 btnCopy.Text = original;
                 btnCopy.Enabled = true;
 
