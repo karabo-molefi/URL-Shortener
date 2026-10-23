@@ -9,6 +9,7 @@ namespace URL_Shortener
 
         public MainForm()
         {
+
             InitializeComponent();
             tabControl1.Appearance = TabAppearance.FlatButtons;
             tabControl1.ItemSize = new Size(0, 1);
@@ -54,7 +55,23 @@ namespace URL_Shortener
         }
         private void btnCopy_Click(object sender, EventArgs e)
         {
-            GoToTab(2);
+            string textToCopy = txtShortUrl.Text;
+
+            try
+            {
+                Clipboard.SetText(textToCopy);
+                string original = btnCopy.Text;
+                btnCopy.Text = "Copied ✔";
+                btnCopy.Enabled = false;
+                Thread.Sleep(1500);
+                btnCopy.Text = original;
+                btnCopy.Enabled = true;
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Couldn't copy to clipboard. Please try again.");
+            }
         }
 
         private void btnReturn_Click(object sender, EventArgs e)
